@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Motion Planning Node -->
+    <node pkg="motion_planning" exec="motion_planning_node" name="motion_planning_node" output="screen">
+        <!-- Planning parameters -->
+        <param name="start_x" value="0.0"/>
+        <param name="start_y" value="0.0"/>
+        <param name="goal_x" value="2.0"/>
+        <param name="goal_y" value="2.0"/>
+        <param name="planner_type" value="rrt"/>
+        
+        <!-- Remap topics if needed -->
+        <remap from="planned_path" to="/motion_planning/planned_path"/>
+        <remap from="obstacles" to="/motion_planning/obstacles"/>
+    </node>
+    
+    <!-- RViz for visualization -->
+    <node pkg="rviz2" exec="rviz2" name="rviz2" args="-d $(find motion_planning)/config/motion_planning.rviz"/>
+</launch>

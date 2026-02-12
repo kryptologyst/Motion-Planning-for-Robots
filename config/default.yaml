@@ -1,0 +1,28 @@
+planner:
+  max_iterations: 1000
+  step_size: 0.1
+  goal_tolerance: 0.1
+  random_seed: 42
+  rewire_radius: 0.5
+  resolution: 0.1
+  heuristic_weight: 1.0
+
+environment:
+  bounds: [0.0, 0.0, 3.0, 3.0]
+  obstacles:
+    - position: [0.5, 0.5]
+      radius: 0.1
+    - position: [1.5, 1.5]
+      radius: 0.1
+    - position: [2.0, 1.0]
+      radius: 0.1
+
+evaluation:
+  num_runs: 100
+  start_position: [0.0, 0.0]
+  goal_position: [2.0, 2.0]
+  metrics:
+    - success_rate
+    - path_length
+    - planning_time
+    - path_smoothness
